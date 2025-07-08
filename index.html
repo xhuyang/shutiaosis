@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我开始找你了！！！</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF85A2',
+                        secondary: '#FFD6E0',
+                        accent: '#FF6B92',
+                        neutral: '#FFF0F5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .bg-blur {
+                backdrop-filter: blur(8px);
+            }
+            .page-transition {
+                transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            }
+            .btn-hover {
+                transition: all 0.3s ease;
+            }
+            .btn-hover:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 25px -5px rgba(255, 133, 162, 0.4);
+            }
+            .char-animation {
+                opacity: 0;
+                display: inline-block;
+                animation: fadeIn 0.3s forwards;
+            }
+            @keyframes fadeIn {
+                to {
+                    opacity: 1;
+                }
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-neutral to-white min-h-screen font-sans text-gray-800">
+    <!-- 页面容器 -->
+    <div id="page-container" class="relative w-full min-h-screen overflow-hidden">
+        <!-- 新增页面：欢迎页面 -->
+        <div id="welcomePage" class="page-transition absolute inset-0 flex flex-col items-center justify-center p-6 opacity-100">
+            <div class="max-w-3xl w-full bg-white/80 bg-blur rounded-2xl shadow-xl p-12 transform transition-all duration-500 hover:shadow-2xl">
+                <h1 class="text-[clamp(2rem,6vw,3.5rem)] font-bold text-primary mb-8 text-center text-shadow animate-bounce">薯条姐姐早上好呀！！！</h1>
+                <p class="text-[clamp(1.2rem,4vw,1.8rem)] leading-relaxed text-gray-700 text-center">
+                    你猜猜接下来我会说什么呢嘿嘿
+                </p>
+            </div>
+            <button id="toFirstPage" class="mt-12 bg-primary hover:bg-accent text-white font-bold py-4 px-10 rounded-full shadow-lg btn-hover flex items-center">
+                <span>点这里</span>
+                <i class="fa fa-arrow-right ml-2"></i>
+            </button>
+        </div>
+
+        <!-- 页面1 -->
+        <div id="page1" class="page-transition absolute inset-0 flex flex-col items-center justify-center p-6 opacity-0 pointer-events-none">
+            <div class="max-w-3xl w-full bg-white/80 bg-blur rounded-2xl shadow-xl p-8 transform transition-all duration-500 hover:shadow-2xl">
+                <h2 class="text-[clamp(1.5rem,5vw,2.5rem)] font-bold text-primary mb-6 text-center text-shadow">终于和薯条姐姐见面啦！！！</h2>
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="md:w-1/2">
+                        <p id="page1Text" class="text-lg leading-relaxed text-gray-700">
+                            小胡带了奶茶，薯条姐姐还带了零食，一起看电影！（薯条姐姐真的超美的！薯条姐姐说和抖音差很多，确实不太像，比抖音上的更好看有没有！！！）
+                        </p>
+                    </div>
+                    <div class="md:w-1/2 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-500 hover:scale-[1.02]">
+                        <!-- 修改后的本地图片路径 -->
+                        <img src="index/pic/1.jpg" alt="和薯条姐姐一起看电影" class="w-full h-auto object-cover">
+                    </div>
+                </div>
+            </div>
+            <div class="flex space-x-4 mt-12">
+                <button id="backToWelcomePage" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-4 px-10 rounded-full shadow-lg btn-hover flex items-center">
+                    <i class="fa fa-arrow-left mr-2"></i>
+                    <span>上一页</span>
+                </button>
+                <button id="toPage2" class="bg-primary hover:bg-accent text-white font-bold py-4 px-10 rounded-full shadow-lg btn-hover flex items-center">
+                    <span>往下往下！</span>
+                    <i class="fa fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 页面2 -->
+        <div id="page2" class="page-transition absolute inset-0 flex flex-col items-center justify-center p-6 opacity-0 pointer-events-none">
+            <div class="max-w-3xl w-full bg-white/80 bg-blur rounded-2xl shadow-xl p-8 transform transition-all duration-500 hover:shadow-2xl">
+                <div class="md:w-full">
+                    <p id="page2Text" class="text-lg leading-relaxed text-gray-700">
+                        看完电影去吃串串自助！！！超好吃的鸡肉串！虽然点了鸳鸯锅，但是却一直很默契的在吃辣锅hhh  小胡同学在特别努力的找话题，但是薯条姐姐好像有一点拘束。这个时候小胡同学有点怀疑自己，薯条姐姐是不是不太喜欢小胡。又想了一下，可能是刚开始还不太熟悉吧！
+                    </p>
+                </div>
+            </div>
+            <div class="flex space-x-4 mt-12">
+                <button id="backToPage1" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-4 px-10 rounded-full shadow-lg btn-hover flex items-center">
+                    <i class="fa fa-arrow-left mr-2"></i>
+                    <span>回去看看</span>
+                </button>
+                <button id="toPage3" class="bg-primary hover:bg-accent text-white font-bold py-4 px-10 rounded-full shadow-lg btn-hover flex items-center">
+                    <span>往下往下！</span>
+                    <i class="fa fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 页面3 -->
+        <div id="page3" class="page-transition absolute inset-0 flex flex-col items-center justify-center p-6 opacity-0 pointer-events-none">
+            <div class="max-w-3xl w-full bg-white/80 bg-blur rounded-2xl shadow-xl p-8 transform transition-all duration-500 hover:shadow-2xl">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="md:w-1/2">
+                        <p id="page3Text" class="text-lg leading-relaxed text-gray-700">
+                            决定吃完饭去唱歌！一起唱了薛之谦、王心凌、张靓颖的歌，被薯条姐姐夸了唱歌好听，小胡同学超开心的！其实薯条姐姐唱歌也很好听，要大声唱出来呀！
+                        </p>
+                    </div>
+                    <div class="md:w-1/2 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-500 hover:scale-[1.02]">
+                        <!-- 修改后的本地图片路径 -->
+                        <img src="index/pic/2.jpg" alt="唱歌" class="w-full h-auto object-cover">
+                    </div>
+                </div>
+            </div>
+            <div class="flex space-x-4 mt-12">
+                <button id="backToPage2" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-4 px-10 rounded-full shadow-lg btn-hover flex items-center">
+                    <i class="fa fa-arrow-left mr-2"></i>
+                    <span>回去看看</span>
+                </button>
+                <button id="toPage4" class="bg-primary hover:bg-accent text-white font-bold py-4 px-10 rounded-full shadow-lg btn-hover flex items-center">
+                    <span>往下往下！</span>
+                    <i class="fa fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 页面4 -->
+        <div id="page4" class="page-transition absolute inset-0 flex flex-col items-center justify-center p-6 opacity-0 pointer-events-none">
+            <div class="max-w-3xl w-full bg-white/80 bg-blur rounded-2xl shadow-xl p-8 transform transition-all duration-500 hover:shadow-2xl">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="md:w-full"> <!-- 修改为占满整个方框 -->
+                        <p id="page4Text" class="text-lg leading-relaxed text-gray-700">
+                            趁着薯条姐姐唱歌的时候，给她送了礼物，是薛之谦代言的玩偶。感觉她有被感动到，但是因为忘记带硬币了有些愧疚，小胡一时也有点手足无措，只能一直说没关系的。但是小胡想说”真的没关系的！薯条姐姐喜欢就好啦！送的礼物能被薯条姐姐喜欢，小胡同学就已经特别特别开心啦！！！“
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex space-x-4 mt-12">
+                <button id="backToPage3" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-4 px-10 rounded-full shadow-lg btn-hover flex items-center">
+                    <i class="fa fa-arrow-left mr-2"></i>
+                    <span>回去看看</span>
+                </button>
+                <button id="toPage5" class="bg-primary hover:bg-accent text-white font-bold py-4 px-10 rounded-full shadow-lg btn-hover flex items-center">
+                    <span>往下往下！</span>
+                    <i class="fa fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 页面5 -->
+        <div id="page5" class="page-transition absolute inset-0 flex flex-col items-center justify-center p-6 opacity-0 pointer-events-none">
+            <div class="max-w-3xl w-full bg-white/80 bg-blur rounded-2xl shadow-xl p-8 transform transition-all duration-500 hover:shadow-2xl">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="md:w-1/2">
+                        <p id="page5Text" class="text-lg leading-relaxed text-gray-700">
+                            逛完商场，薯条姐姐请吃晚饭，一起看电影
+                        </p>
+                    </div>
+                    <div class="md:w-1/2 rounded-xl overflow-hidden shadow-lg transform transition-transform duration-500 hover:scale-[1.02]">
+                        <!-- 修改后的本地图片路径 -->
+                        <img src="index/pic/3.jpg" alt="和薯条姐姐一起吃晚餐" class="w-full h-auto object-cover">
+                    </div>
+                </div>
+            </div>
+            <div class="flex space-x-4 mt-12">
+                <button id="backToPage4" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-4 px-10 rounded-full shadow-lg btn-hover flex items-center">
+                    <i class="fa fa-arrow-left mr-2"></i>
+                    <span>回去看看</span>
+                </button>
+                <button id="toPage6" class="bg-primary hover:bg-accent text-white font-bold py-4 px-10 rounded-full shadow-lg btn-hover flex items-center">
+                    <span>往下往下！</span>
+                    <i class="fa fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 页面6 -->
+        <div id="page6" class="page-transition absolute inset-0 flex flex-col items-center justify-center p-6 opacity-0 pointer-events-none">
+            <div class="max-w-3xl w-full bg-white/80 bg-blur rounded-2xl shadow-xl p-8 transform transition-all duration-500 hover:shadow-2xl">
+                <div class="flex flex-col items-center">
+                    <div class="rounded-xl overflow-hidden shadow-lg transform transition-transform duration-500 hover:scale-[1.02] mb-8 w-full md:w-1/2">
+                        <!-- 修改后的本地图片路径 -->
+                        <img src="index/pic/5.jpg" alt="日落" class="w-full h-auto object-cover">
+                    </div>
+                    <div>
+                        <p id="page6Text" class="text-lg leading-relaxed text-gray-700 text-center">
+                            和薯条姐姐见面的第一天就结束了，小胡同学特别特别开心，薯条姐姐应该也会有点开心吧。薯条姐姐说小胡同学是个不错的男生，他特别特别感动，有被鼓励到，要努力不让薯条姐姐失望！！！小胡同学特别特别期待，希望下次见面可以有更特别的体验！
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex space-x-4 mt-12">
+                <button id="backToPage5" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-4 px-10 rounded-full shadow-lg btn-hover flex items-center">
+                    <i class="fa fa-arrow-left mr-2"></i>
+                    <span>回去看看</span>
+                </button>
+                <button id="restartJourney" class="bg-primary hover:bg-accent text-white font-bold py-4 px-10 rounded-full shadow-lg btn-hover flex items-center">
+                    <i class="fa fa-refresh mr-2"></i>
+                    <span>重新开始</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 获取所有页面元素
+        const pages = [
+            document.getElementById('welcomePage'),
+            document.getElementById('page1'),
+            document.getElementById('page2'),
+            document.getElementById('page3'),
+            document.getElementById('page4'),
+            document.getElementById('page5'),
+            document.getElementById('page6')
+        ];
+
+        // 获取所有按钮元素
+        const toFirstPageBtn = document.getElementById('toFirstPage');
+        const backToWelcomePageBtn = document.getElementById('backToWelcomePage');
+        const toPage2Btn = document.getElementById('toPage2');
+        const backToPage1Btn = document.getElementById('backToPage1');
+        const toPage3Btn = document.getElementById('toPage3');
+        const backToPage2Btn = document.getElementById('backToPage2');
+        const toPage4Btn = document.getElementById('toPage4');
+        const backToPage3Btn = document.getElementById('backToPage3');
+        const toPage5Btn = document.getElementById('toPage5');
+        const backToPage4Btn = document.getElementById('backToPage4');
+        const toPage6Btn = document.getElementById('toPage6');
+        const backToPage5Btn = document.getElementById('backToPage5');
+        const restartBtn = document.getElementById('restartJourney');
+
+        // 文字动画函数
+        function animateText(elementId) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            
+            const text = element.innerText;
+            element.innerHTML = '';
+            
+            // 为每个字符创建一个span元素并添加渐变动画
+            text.split('').forEach((char, index) => {
+                const span = document.createElement('span');
+                span.className = 'char-animation';
+                span.style.animationDelay = `${index * 30}ms`;
+                span.textContent = char;
+                element.appendChild(span);
+            });
+        }
+
+        // 页面切换函数
+        function showPage(pageIndex) {
+            pages.forEach((page, index) => {
+                if (index === pageIndex) {
+                    page.classList.remove('opacity-0', 'pointer-events-none');
+                    page.classList.add('opacity-100');
+                    
+                    // 除了欢迎页外，其他页面都添加文字动画
+                    if (index > 0) {
+                        const pageNumber = index + 1;
+                        animateText(`page${pageNumber}Text`);
+                    }
+                } else {
+                    page.classList.remove('opacity-100');
+                    page.classList.add('opacity-0', 'pointer-events-none');
+                }
+            });
+        }
+
+        // 为按钮添加事件监听器
+        toFirstPageBtn.addEventListener('click', () => showPage(1));
+        backToWelcomePageBtn.addEventListener('click', () => showPage(0));
+        toPage2Btn.addEventListener('click', () => showPage(2));
+        backToPage1Btn.addEventListener('click', () => showPage(1));
+        toPage3Btn.addEventListener('click', () => showPage(3));
+        backToPage2Btn.addEventListener('click', () => showPage(2));
+        toPage4Btn.addEventListener('click', () => showPage(4));
+        backToPage3Btn.addEventListener('click', () => showPage(3));
+        toPage5Btn.addEventListener('click', () => showPage(5));
+        backToPage4Btn.addEventListener('click', () => showPage(4));
+        toPage6Btn.addEventListener('click', () => showPage(6));
+        backToPage5Btn.addEventListener('click', () => showPage(5));
+        restartBtn.addEventListener('click', () => showPage(0));
+
+        // 添加键盘导航
+        document.addEventListener('keydown', (e) => {
+            // 找到当前显示的页面索引
+            const currentPageIndex = pages.findIndex(page => !page.classList.contains('opacity-0'));
+            
+            // 右箭头或下箭头导航到下一页
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                if (currentPageIndex < pages.length - 1) {
+                    showPage(currentPageIndex + 1);
+                }
+            }
+            
+            // 左箭头或上箭头导航到上一页
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                if (currentPageIndex > 0) {
+                    showPage(currentPageIndex - 1);
+                }
+            }
+            
+            // R键重新开始
+            if (e.key === 'r' || e.key === 'R') {
+                showPage(0);
+            }
+        });
+
+        // 初始化显示欢迎页面
+        showPage(0);
+    </script>
+</body>
+</html>
+    
